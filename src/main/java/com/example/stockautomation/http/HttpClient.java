@@ -15,12 +15,16 @@ import org.springframework.web.client.RestTemplate;
 public class HttpClient {
     private final RestTemplate restTemplate;
 
-    public String execute(String url, HttpMethod method, HttpHeaders headers) {
+    public String execute(String url, HttpMethod method, String body, String refreshToken) {
         try {
+            HttpHeaders headers = new HttpHeaders();
+            headers.add("Content-Type", "application/json");
+            headers.add("Authorization", "Bearer " + refreshToken);
+            HttpEntity<String> request = new HttpEntity<>(body, headers);
             return restTemplate.exchange(
                     url,
                     method,
-                    new HttpEntity<>(headers),
+                    request,
                     new ParameterizedTypeReference<String>() {}
             ).getBody();
         } catch (RestClientException e) {
@@ -28,4 +32,5 @@ public class HttpClient {
         }
     }
 }
+
 
