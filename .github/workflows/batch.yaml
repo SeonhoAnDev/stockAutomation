@@ -16,8 +16,8 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
       - name: Grant execute permission for gradlew
-        run: chomd +x gradlew
+        run: chmod +x gradlew
       - name: Bilud with Gradle
         run: ./gradlew clean :bilud -x test
-      - name: Run batcgh
+      - name: Run batcgh　
         run: java -jar -Dspring.batch.job.name=stockSlackJob -Dspring.profiles.active=github ./build/libs/stockAutomation-0.0.1-SNAPSHOT.jar stock=9449
