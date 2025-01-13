@@ -38,4 +38,10 @@ dependencies {
 	implementation 'com.slack.api:slack-api-client:1.30.0'
 	implementation 'com.slack.api:slack-api-model:1.30.0'
 	implementation 'com.h2database:h2'
+	testImplementation 'org.junit.jupiter:junit-jupiter-api'
+	testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+test {
+	useJUnitPlatform()
 }
