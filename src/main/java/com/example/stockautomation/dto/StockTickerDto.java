@@ -1,9 +1,11 @@
 package com.example.stockautomation.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import lombok.Getter;
 
 @Getter
+@Builder
 public class StockTickerDto {
         @JsonProperty("Date")
         private String date; // 日付 (YYYY-MM-DD)
