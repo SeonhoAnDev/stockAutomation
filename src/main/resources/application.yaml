@@ -1,0 +1,11 @@
+spring:
+  batch:
+    job:
+      enabled: true
+      name: ${job.name:NONE}
+
+
+jquants:
+  email: dkstjsgh5@gmail.com
+  password: aA58450002024
+
