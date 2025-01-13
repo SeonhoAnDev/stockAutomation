@@ -20,4 +20,4 @@ jobs:
       - name: build with Gradle
         run: ./gradlew clean :build -x test
       - name: Run batcgh　
-        run: java -jar -Dspring.batch.job.name=stockSlackJob -Dspring.profiles.active=github ./build/libs/stockAutomation-0.0.1-SNAPSHOT.jar stock=9449
+        run: java -jar -Dspring.batch.job.name=tickerSlackJob -Dspring.profiles.active=github ./build/libs/stockAutomation-0.0.1-SNAPSHOT.jar stock=9449
