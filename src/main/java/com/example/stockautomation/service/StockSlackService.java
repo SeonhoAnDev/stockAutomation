@@ -28,14 +28,14 @@ public class StockSlackService {
                 "[銘柄コード_"+
                 stock + "]" +
                 " price = " +
-                tickerByStock.getClose();
+                tickerByStock.close();
             SlackHttpClient.sendSlackMessage(sb);
 
             repository.save(
                     stock,
-                    String.valueOf(tickerByStock.getOpen()),
-                    String.valueOf(tickerByStock.getClose()),
-                    String.valueOf(tickerByStock.getHigh()),
-                    String.valueOf(tickerByStock.getLow()));
+                    String.valueOf(tickerByStock.open()),
+                    String.valueOf(tickerByStock.close()),
+                    String.valueOf(tickerByStock.high()),
+                    String.valueOf(tickerByStock.low()));
     }
 }
