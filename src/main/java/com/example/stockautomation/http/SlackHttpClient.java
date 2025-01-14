@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class SlackHttpClient {
-    private static final String WEBHOOK_URL = "https://hooks.slack.com/services/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";
+    private static final String WEBHOOK_URL = "https://hooks.slack.com/services/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";
 
     public static void sendSlackMessage(String message) {
         try {
