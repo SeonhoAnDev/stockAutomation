@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class SlackHttpClient {
 
-    @Value("${secrets.SLACK_WEBHOOK_URL}")
+    @Value("${slack.key}")
     private String webhookUrl;
 
     private static String WEBHOOK_URL;
