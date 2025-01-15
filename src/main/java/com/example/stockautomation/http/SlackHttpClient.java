@@ -2,11 +2,13 @@ package com.example.stockautomation.http;
 
 import com.slack.api.Slack;
 import com.slack.api.webhook.Payload;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SlackHttpClient {
-    private static final String WEBHOOK_URL = "https://hooks.slack.com/services/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";
+    @Value("${slack.key}")
+    private static String WEBHOOK_URL;
 
     public static void sendSlackMessage(String message) {
         try {

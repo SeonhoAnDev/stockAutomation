@@ -3,9 +3,27 @@ spring:
     job:
       enabled: true
       name: ${job.name:NONE}
+  datasource:
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 10
+      idle-timeout: 30000
+      pool-name: HikariPool-1
+      max-lifetime: 600000
+      connection-timeout: 30000
+      auto-commit: true
+  jpa:
+    properties:
+      hibernate:
+        transaction:
+          jta:
+            platform: org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform
 
 
 jquants:
   email: dkstjsgh5@gmail.com
   password: aA58450002024
+
+slack:
+  key: https://hooks.slack.com/services/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
 
