@@ -21,3 +21,8 @@ jobs:
         run: ./gradlew clean :build -x test
       - name: Run batcgh　
         run: java -jar -Dspring.batch.job.name=tickerSlackJob -Dspring.profiles.active=github ./build/libs/stockAutomation-0.0.1-SNAPSHOT.jar stock=9449
+      - name: Send Slack notification
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: |
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Build completed successfully!"}' $SLACK_WEBHOOK_URL
