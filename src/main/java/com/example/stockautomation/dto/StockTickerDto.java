@@ -1,7 +1,7 @@
 package com.example.stockautomation.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Builder;¥
+import lombok.Builder;
 
 @Builder
 public record StockTickerDto(
@@ -22,4 +22,3 @@ public record StockTickerDto(
         @JsonProperty("AdjustmentClose") Number adjustmentClose, // 調整済み終値
         @JsonProperty("AdjustmentVolume") Number adjustmentVolume // 調整済み取引高
 ) {}
-
