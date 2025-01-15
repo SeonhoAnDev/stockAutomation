@@ -3,8 +3,7 @@ package com.example.stockautomation.http;
 import com.slack.api.Slack;
 import com.slack.api.webhook.Payload;
 import jakarta.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+
 
 @Component
 public class SlackHttpClient {
@@ -18,6 +17,7 @@ public class SlackHttpClient {
     public void init() {
         WEBHOOK_URL = this.webhookUrl;
     }
+
 
     public static void sendSlackMessage(String message) {
         try {
