@@ -24,4 +24,6 @@ jquants:
   email: dkstjsgh5@gmail.com
   password: aA58450002024
 
+slack:
+  key: ${SLACK_WEBHOOK_URL}
 
