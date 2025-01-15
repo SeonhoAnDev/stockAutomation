@@ -3,6 +3,8 @@ package com.example.stockautomation.http;
 import com.slack.api.Slack;
 import com.slack.api.webhook.Payload;
 import jakarta.annotation.PostConstruct;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 
 @Component
