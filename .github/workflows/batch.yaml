@@ -19,7 +19,9 @@ jobs:
         run: chmod +x gradlew
       - name: build with Gradle
         run: ./gradlew clean :build -x test
-      - name: Run batcgh　
+      - name: Set environment variable
+        run: echo "SLACK_WEBHOOK_URL=${{ secrets.SLACK_WEBHOOK_URL }}" >> $GITHUB_ENV
+      - name: Run batch
         run: java -jar -Dspring.batch.job.name=tickerSlackJob -Dspring.profiles.active=github ./build/libs/stockAutomation-0.0.1-SNAPSHOT.jar stock=9449
       - name: Send Slack notification
         env:
