@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-22.04
+    environment: production
     steps:
       - uses: actions/checkout@v2
       - name: Set up JDK 17
