@@ -25,9 +25,6 @@ jobs:
           echo "JQUANTS_EMAIL=${{ secrets.JQUANTS_EMAIL }}" >> $GITHUB_ENV
           echo "JQUANTS_PASSWORD=${{ secrets.JQUANTS_PASSWORD }}" >> $GITHUB_ENV
       - name: Run batch
-        env:
-         JQUANTS_EMAIL: ${{ secrets.JQUANTS_EMAIL }}
-         JQUANTS_PASSWORD: ${{ secrets.JQUANTS_PASSWORD }}
         run: java -jar -Dspring.batch.job.name=tickerSlackJob -Dspring.profiles.active=github ./build/libs/stockAutomation-0.0.1-SNAPSHOT.jar stock=9449
       - name: Send Slack notification
         env:

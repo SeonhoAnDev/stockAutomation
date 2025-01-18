@@ -21,8 +21,8 @@ spring:
 
 
 jquants:
-  email: ${jquants_email}
-  password: ${jquants_password}
+  email: ${JQUANTS_EMAIL}
+  password: ${JQUANTS_PASSWORD}
 
 slack:
   key: ${SLACK_WEBHOOK_URL}
