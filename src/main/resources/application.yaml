@@ -21,8 +21,8 @@ spring:
 
 
 jquants:
-  email: dkstjsgh5@gmail.com
-  password: aA58450002024
+  email: ${jquants_email}
+  password: ${jquants_password}
 
 slack:
   key: ${SLACK_WEBHOOK_URL}
