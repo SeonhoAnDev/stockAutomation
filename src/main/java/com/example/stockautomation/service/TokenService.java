@@ -13,14 +13,14 @@ public class TokenService {
     private final HttpClient httpClient;
 
     @Value("${jquants.email}")
-    private String email;
+    private String jquants_email;
 
     @Value("${jquants.password}")
-    private String password;
+    private String jquants_password;
 
     public String getRefreshToken() {
         String url = "https://api.jquants.com/v1/token/auth_user";
-        String jsonInputString = String.format("{\"mailaddress\":\"%s\", \"password\":\"%s\"}", email, password);
+        String jsonInputString = String.format("{\"mailaddress\":\"%s\", \"password\":\"%s\"}", jquants_email, jquants_password);
         String response = httpClient.execute(url, HttpMethod.POST, jsonInputString, "");
         return new JSONObject(response).getString("refreshToken");
     }
