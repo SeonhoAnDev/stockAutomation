@@ -29,4 +29,4 @@ jobs:
           jquants_email: ${{ secrets.JQUANTS_EMAIL }}
           jquants_password: ${{ secrets.JQUANTS_PASSWORD }}
         run: |
-          curl -X POST -H 'Content-type: application/json' --data '{"text":"Build completed successfully!"}' $SLACK_WEBHOOK_URL
+          curl -X POST -H 'Content-type: application/json' --data '{"text":"Build completed successfully!"}' $SLACK_WEBHOOK_URL　$JQUANTS_EMAIL　$JQUANTS_PASSWORD
