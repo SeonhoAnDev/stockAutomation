@@ -1,1 +1,8 @@
 rootProject.name = 'stockAutomation'
+
+// 以下のファイルのみを残す:
+// - settings.gradle
+// - README.md 
+// - HELP.md
+// - build.gradle
+// - src/
