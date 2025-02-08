@@ -1,75 +1,75 @@
-# 株式自動化プロジェクト
+# 株式自動化システム
 
-## プロジェクト概要
-このプロジェクトは、株式データを自動で収集し、Slackに通知を送信するシステムです。株式データを収集してレポートを作成し、これをSlackチャンネルに投稿することで、リアルタイムで株式情報を確認できます。
+## 🎯 プロジェクト概要
+株式市場のデータをリアルタイムで監視し、自動的にSlackへ通知を送信する自動化システムを開発しました。投資家の意思決定をサポートするため、重要な株式情報をタイムリーに提供します。
 
-## 主な機能
-- **株式データ収集**: 特定の株式のデータを収集して保存します。
-- **営業日計算**: 前営業日を計算してデータを処理します。
-- **Slack通知**: 収集した株式データをSlackチャンネルに通知します。
-- **レポート保存**: 収集したデータに基づいてレポートを作成し保存します。
+## 🌟 主な機能
+- **リアルタイム株式データ収集**
+  - 指定した銘柄の株価情報を自動収集
+  - 株価の始値、終値、高値、低値などの詳細データを取得
 
-## 技術スタック
-- **Java**: 主なプログラミング言語
-- **Spring Boot**: アプリケーションフレームワーク
-- **Gradle**: ビルドツール
-- **JUnit**: テストフレームワーク
-- **Mockito**: モッキングフレームワーク
-- **Slack API**: Slack通知用API
+- **インテリジェントな営業日管理**
+  - 休日や祝日を考慮した営業日カレンダー管理
+  - 前営業日のデータ自動計算機能
 
-# 株式自動化プロジェクト設計
+- **Slack連携による通知システム**
+  - カスタマイズ可能なSlackチャンネルへの自動通知
+  - 重要な株価変動のアラート機能
 
-## クラス設計
-  
-### StockSlackService
-- **説明**: 株式データを収集し、Slackに通知を送信するサービスクラスです。
-- **主なメソッド**:
-    - `execute(String stock)`: 指定された株式コードに基づいてデータを収集し、Slackに通知を送信します。
+- **データ永続化と分析**
+  - 収集したデータのデータベース保存
+  - 過去データの分析とレポート生成機能
 
-### StockHttpClient
-- **説明**: 株式データを外部APIから取得するHTTPクライアントクラスです。
-- **主なメソッド**:
-    - `getTickerByStock(String stock)`: 指定された株式コードに対する株式データを取得します。
+## 🛠 技術スタック
+### バックエンド
+- **言語**: Java 17
+- **フレームワーク**: Spring Boot 3.4.1
+- **ビルドツール**: Gradle
+- **データベース**: MySQL
 
-### SlackHttpClient
-- **説明**: Slackにメッセージを送信するHTTPクライアントクラスです。
-- **主なメソッド**:
-    - `sendSlackMessage(String message)`: 指定されたメッセージをSlackチャンネルに送信します。
+### 外部API連携
+- Slack API
+- 株式情報API
 
-### BusinessDayService
-- **説明**: 営業日を計算するサービスクラスです。
-- **主なメソッド**:
-    - `getPreviousBusinessDay()`: 前営業日を計算して返します。
+### テスト
+- JUnit
+- Mockito
 
-### ReportHistoryRepository
-- **説明**: 株式データレポートを保存するリポジトリクラスです。
-- **主なメソッド**:
-    - `save(ReportHistory reportHistory)`: 指定された `ReportHistory` オブジェクトを保存します。
+### その他のツール
+- Lombok
+- Spring Batch
 
-## API設計
+## 📊 システム設計
 
-### 株式データ収集API
-- **エンドポイント**: `/api/stock/{stockCode}`
-- **メソッド**: GET
-- **説明**: 指定された株式コードに基づいて株式データを収集し、Slackに通知を送信します。
-- **リクエストパラメータ**:
-    - `stockCode` (String): 株式コード
-- **レスポンス**:
-    - 成功時: 200 OK
-    - 失敗時: 400 Bad Request または 500 Internal Server Error
+### アーキテクチャ
+```
+[株式データAPI] ⟶ [StockHttpClient] ⟶ [StockSlackService] ⟶ [SlackHttpClient] ⟶ [Slack]
+                                          ↓
+                                    [データベース]
+```
 
-## データベース設計
+### 主要コンポーネント
+- **StockSlackService**: ビジネスロジックの中核
+- **StockHttpClient**: 外部APIとの通信
+- **BusinessDayService**: 営業日計算ロジック
+- **ReportHistoryRepository**: データ永続化
 
-### テーブル: `report_histories`
-- **説明**: 株式データレポートを保存するテーブルです。
-- **スキーマ**:
-  ```sql
-  CREATE TABLE `report_histories` (
-      `id` INT AUTO_INCREMENT PRIMARY KEY,
-      `stock_code` VARCHAR(45) NOT NULL,
-      `open_price` VARCHAR(45) NOT NULL,
-      `close_price` VARCHAR(45) NOT NULL,
-      `high_price` VARCHAR(45) NOT NULL,
-      `low_price` VARCHAR(45) NOT NULL,
-      `reported_at` DATETIME
-  );
+## 💡 技術的な特徴
+- **スケーラビリティ**
+  - マイクロサービスアーキテクチャの採用
+  - 非同期処理による効率的なデータ収集
+
+- **保守性**
+  - クリーンアーキテクチャの採用
+  - 詳細なログ記録
+  - 包括的なユニットテスト
+
+- **セキュリティ**
+  - 環境変数による機密情報の管理
+  - APIキーの安全な取り扱い
+
+## 🚀 今後の展望
+- AIを活用した株価予測機能の追加
+- より詳細な分析レポートの生成
+- リアルタイムグラフ表示機能の実装
+- finConnectアプリとの連携
